@@ -10,7 +10,7 @@ def cleanse(spark):
     salesDF = spark.read.format("csv").options(header="True", inferSchema="True").load("s3://juliet-raw/sales.dat")
     productDF = spark.read.format("csv").options(header="True", inferSchema="True").load("s3://juliet-raw/product.dat")
 
-    # deduplicate
+    # dedup
     storeDF = storeDF.distinct()
     salesDF = salesDF.distinct()
     productDF = productDF.distinct()
