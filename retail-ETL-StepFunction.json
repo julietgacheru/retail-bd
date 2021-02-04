@@ -1,0 +1,34 @@
+{
+  "StartAt": "Data Cleanse",
+    "Comment": "ETL Job for retail project.",
+    "States": {
+      "Data Cleanse":{
+        "Type":"Task", 
+        "Resource":"arn:aws:states:::glue:startJobRun.sync", 
+        "Parameters":{
+          "JobName": "cleanseJob"
+        },
+        "Next":"Conform Data"
+      }, 
+    "Conform Data": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::glue:startJobRun.sync", 
+      "Parameters":{
+        "JobName": "conformJob"
+      },
+      "Next":"Summarize Data" 
+    },
+      "Summarize Data" : {
+        "Type": "Task",
+        "Resource":"arn:aws:states:::glue:startJobRun", 
+        "Parameters": {
+          "JobName": "summaryJob"
+      }, 
+        "End": true
+      }
+      
+   }
+}
+
+      
+      
