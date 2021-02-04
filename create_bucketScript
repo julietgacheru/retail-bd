@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# create retail project buckets 
+aws s3api create-bucket --bucket juliet-raw --region us-east-1
+aws s3api create-bucket --bucket juliet-curated --region us-east-1
+aws s3api create-bucket --bucket juliet-conformed --region us-east-1
+aws s3api create-bucket --bucket juliet-rejected --region us-east-1
+aws s3api create-bucket --bucket juliet-scripts --region us-east-1
+aws s3api create-bucket --bucket juliet-analytics --region us-east-1
